@@ -1,0 +1,24 @@
+# zsh functions
+
+# Yes, there's an encrypted file with passwords which this script searches for given entries in. Sue me...
+function searchPW() {
+ if [ ${#} -eq 0 ]; then
+    echo "No arguments supplied. What are we looking for?"
+    exit 2
+  fi
+
+  enc=`gpg --decrypt ~/Desktop/julienhdd/Documents/documents/pw_list.txt.asc`
+  for i in ${@}; do
+    echo "$enc" | grep -iA 2 $i 
+  done
+}
+
+# wrapper for matrix-script from: http://bruxy.regnet.cz/web/linux/EN/matrix-sh
+function matrix() {
+  ~/bin/matrix.sh
+}
+
+# Trying to make 'rm' a little less exciting (set in .aliases, triggered in .zshrc)
+function trash_file() {
+  mv $1 ~/trash/
+}
