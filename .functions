@@ -20,5 +20,5 @@ function matrix() {
 
 # Trying to make 'rm' a little less exciting (set in .aliases, triggered in .zshrc)
 function trash_file() {
-  mv $1 ~/trash/
+  mv $1 ~/.local/share/Trash/files
 }
